@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lucas Araújo — Engenharia de Computação | Portfólio</title>
+  <meta name="description" content="Portfólio de Lucas Araújo de Paula, estudante de Engenharia de Computação no CEUB — Brasília/DF. Hardware, Software e Dados." />
+  <meta name="author" content="Lucas Araújo de Paula" />
+  <meta property="og:title" content="Lucas Araújo — Portfólio" />
+  <meta property="og:description" content="Engenharia de Computação | CEUB | Hardware + Software + Dados" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+  
+<nav id="navbar">
+  <div class="nav-logo">&lt;lucas.araujo /&gt;</div>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#about">Sobre</a></li>
+    <li><a href="#skills">Habilidades</a></li>
+    <li><a href="#projects">Projetos</a></li>
+    <li><a href="#education">Formação</a></li>
+    <li><a href="#contact">Contato</a></li>
+  </ul>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <p class="hero-greeting">// Olá, mundo.</p>
+      <h1 class="hero-name">Lucas Araújo<br>de Paula</h1>
+      <p class="hero-typewriter"><span id="typewriter"></span><span style="color:var(--accent);animation:blink 1s step-end infinite">|</span></p>
+      <p class="hero-desc">
+        Estudante de Engenharia de Computação no CEUB, Brasília — com interesse genuíno em desenvolvimento de software, sistemas embarcados e análise de dados. Atualmente estagiário no Ministério da Educação, construindo soluções reais todos os dias.
+      </p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn btn-primary" id="btn-projects">Ver meus projetos</a>
+        <a href="#contact" class="btn btn-outline" id="btn-contact">Entrar em contato</a>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <div class="photo-glow"></div>
+      <div class="hero-photo-ring">
+        <img src="foto.jpg" alt="Lucas Araújo de Paula" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <p class="section-label reveal">Quem sou eu</p>
+    <h2 class="section-title reveal">Sobre mim</h2>
+    <div class="section-line reveal"></div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>
+          Sou estudante de Engenharia de Computação no CEUB, cursando o 7º semestre, e há alguns anos venho construindo uma trajetória que equilibra teoria e prática de forma deliberada. Minha paixão está na interseção entre hardware e software — acredito que entender as duas camadas me torna um profissional mais completo.
+        </p>
+        <p>
+          Atualmente estou no Ministério da Educação como estagiário de TI, onde desenvolvo sistemas internos com front-end, back-end e VBA, além de atuar na manipulação e gestão de dados. Antes disso, trabalhei no La Salle, consolidando minha base em suporte técnico e ferramentas colaborativas.
+        </p>
+        <div class="about-highlight">
+          <p>No evento ENCUCA do CEUB, apresentei junto a dois colegas um dispenser de ração automático para animais — desenvolvemos o hardware e o software do zero. O projeto foi minha primeira experiência completa de produto: da placa ao código, da ideia ao palco.</p>
+        </div>
+        <p>
+          Nos próximos 3 a 5 anos, me vejo atuando como desenvolvedor full-stack ou engenheiro de software, com especialização em dados e sistemas embarcados. Quero construir soluções que gerem impacto mensurável — seja em startups, grandes empresas ou projetos open source.
+        </p>
+        <div class="about-stats">
+          <div class="stat-card">
+            <div class="stat-num">7°</div>
+            <div class="stat-label">Semestre em andamento</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">4+</div>
+            <div class="stat-label">Projetos entregues</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">2</div>
+            <div class="stat-label">Estágios em TI</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">11+</div>
+            <div class="stat-label">Certificações online</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-info reveal">
+        <div class="info-item">
+          <div class="info-icon">&#127979;</div>
+          <div>
+            <div class="info-label">Instituição</div>
+            <div class="info-value">CEUB — Centro Universitário de Brasília</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">&#127891;</div>
+          <div>
+            <div class="info-label">Curso</div>
+            <div class="info-value">Bacharelado em Engenharia da Computação</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">&#128205;</div>
+          <div>
+            <div class="info-label">Localização</div>
+            <div class="info-value">Guará — Brasília / DF</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">&#128188;</div>
+          <div>
+            <div class="info-label">Estágio atual</div>
+            <div class="info-value">Estagiário de TI — Ministério da Educação</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">&#127760;</div>
+          <div>
+            <div class="info-label">Idiomas</div>
+            <div class="info-value">Português (nativo) · Inglês (intermediário) · Espanhol (intermediário)</div>
+          </div>
+        </div>
+        <div class="info-item">
+          <div class="info-icon">&#9881;</div>
+          <div>
+            <div class="info-label">Interesses</div>
+            <div class="info-value">Desenvolvimento de Software · Hardware · Dados · IoT</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container">
+    <p class="section-label reveal">Competências técnicas</p>
+    <h2 class="section-title reveal">Stack &amp; Habilidades</h2>
+    <div class="section-line reveal"></div>
+    <div class="skills-grid">
+
+      <div class="skill-category reveal">
+        <div class="skill-cat-title">Linguagens de Programação</div>
+        <div class="chips">
+          <span class="chip chip-blue">Python</span>
+          <span class="chip chip-blue">C / C++</span>
+          <span class="chip chip-blue">JavaScript</span>
+          <span class="chip chip-blue">HTML</span>
+          <span class="chip chip-blue">CSS</span>
+          <span class="chip chip-blue">VBA</span>
+          <span class="chip chip-blue">SQL</span>
+        </div>
+      </div>
+
+      <div class="skill-category reveal">
+        <div class="skill-cat-title">Hardware &amp; Sistemas Embarcados</div>
+        <div class="chips">
+          <span class="chip chip-orange">Arduino</span>
+          <span class="chip chip-orange">Raspberry Pi</span>
+          <span class="chip chip-orange">Montagem de Circuitos</span>
+          <span class="chip chip-orange">Sensores &amp; Atuadores</span>
+          <span class="chip chip-orange">Circuitos Digitais</span>
+          <span class="chip chip-orange">Sistemas em Tempo Real</span>
+          <span class="chip chip-orange">Processamento Digital de Sinais</span>
+        </div>
+      </div>
+
+      <div class="skill-category reveal">
+        <div class="skill-cat-title">Dados &amp; Análise</div>
+        <div class="chips">
+          <span class="chip chip-cyan">Pandas</span>
+          <span class="chip chip-cyan">NumPy</span>
+          <span class="chip chip-cyan">Análise de Dados</span>
+          <span class="chip chip-cyan">Gestão de Dados</span>
+          <span class="chip chip-cyan">Power BI</span>
+          <span class="chip chip-cyan">Excel Avançado</span>
+          <span class="chip chip-cyan">Agentes de IA</span>
+        </div>
+      </div>
+
+      <div class="skill-category reveal">
+        <div class="skill-cat-title">Web &amp; Back-End</div>
+        <div class="chips">
+          <span class="chip chip-violet">Front-End</span>
+          <span class="chip chip-violet">Back-End</span>
+          <span class="chip chip-violet">REST APIs</span>
+          <span class="chip chip-violet">Git &amp; GitHub</span>
+          <span class="chip chip-violet">VS Code</span>
+          <span class="chip chip-violet">Interação Humano-Computador</span>
+        </div>
+      </div>
+
+      <div class="skill-category reveal">
+        <div class="skill-cat-title">Banco de Dados</div>
+        <div class="chips">
+          <span class="chip chip-green">SQL</span>
+          <span class="chip chip-green">Banco de Dados Relacional</span>
+          <span class="chip chip-green">Modelagem de Dados</span>
+        </div>
+      </div>
+
+      <div class="skill-category reveal">
+        <div class="skill-cat-title">Infraestrutura &amp; Ferramentas</div>
+        <div class="chips">
+          <span class="chip chip-pink">Windows</span>
+          <span class="chip chip-pink">Linux</span>
+          <span class="chip chip-pink">Chrome OS</span>
+          <span class="chip chip-pink">Google Workspace</span>
+          <span class="chip chip-pink">Pacote Office</span>
+          <span class="chip chip-pink">Cibersegurança</span>
+          <span class="chip chip-pink">IoT</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <p class="section-label reveal">O que construí</p>
+    <h2 class="section-title reveal">Projetos</h2>
+    <div class="section-line reveal"></div>
+    <div class="projects-grid">
+
+      <div class="project-card reveal">
+        <span class="project-tag tag-hw">Hardware + Software</span>
+        <h3 class="project-title">Dispenser de Ração Automático</h3>
+        <p class="project-desc">
+          Apresentado no ENCUCA (evento científico do CEUB), este projeto integrou engenharia de hardware e software para criar um dispenser automatizado para alimentação de animais. Desenvolvemos a eletrônica, a lógica de controle e a interface de configuração — do conceito ao palco, em equipe de três integrantes. O tema explorou a aplicação da Engenharia de Computação na Medicina Veterinária.
+        </p>
+        <div class="project-stack">
+          <span class="stack-tag">Arduino</span>
+          <span class="stack-tag">C/C++</span>
+          <span class="stack-tag">Sensores</span>
+          <span class="stack-tag">Circuitos</span>
+          <span class="stack-tag">Automação</span>
+        </div>
+        <div class="project-links">
+          <span class="project-link">Projeto Acadêmico — ENCUCA / CEUB</span>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <span class="project-tag tag-iot">IoT · Acessibilidade</span>
+        <h3 class="project-title">Controle Remoto por Voz</h3>
+        <p class="project-desc">
+          Dispositivo IoT desenvolvido para promover acessibilidade: pessoas com deficiência motora podem controlar equipamentos eletrônicos utilizando apenas a voz. O sistema capta comandos de fala, processa localmente e aciona os dispositivos correspondentes via protocolo sem fio. Um projeto que une tecnologia e impacto social de forma direta.
+        </p>
+        <div class="project-stack">
+          <span class="stack-tag">IoT</span>
+          <span class="stack-tag">Reconhecimento de Voz</span>
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">Raspberry Pi</span>
+          <span class="stack-tag">Acessibilidade</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/15LUCASARAUJO" class="project-link" target="_blank" rel="noopener">GitHub &#8599;</a>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <span class="project-tag tag-web">Aplicação Web</span>
+        <h3 class="project-title">Plataforma de Leilão de Veículos</h3>
+        <p class="project-desc">
+          Sistema web completo para leilão de automóveis, com atualizações em tempo real de lances, autenticação de usuários, painel administrativo e gestão de catálogo. O projeto cobre o ciclo completo de uma aplicação: front-end responsivo, back-end robusto e banco de dados relacional.
+        </p>
+        <div class="project-stack">
+          <span class="stack-tag">JavaScript</span>
+          <span class="stack-tag">HTML/CSS</span>
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">SQL</span>
+          <span class="stack-tag">WebSocket</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/15LUCASARAUJO" class="project-link" target="_blank" rel="noopener">GitHub &#8599;</a>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <span class="project-tag tag-sys">Sistema Corporativo</span>
+        <h3 class="project-title">Sistema de Pedidos Orçamentários — MEC</h3>
+        <p class="project-desc">
+          Sistema interno desenvolvido durante meu estágio no Ministério da Educação para gestão completa de pedidos orçamentários. A solução contempla múltiplos níveis de acesso por secretaria, controle de transferências de saldo, histórico de pedidos, relatórios gerenciais e fluxo de aprovação. Um projeto de uso real em ambiente federal, com exigência de segurança e confiabilidade.
+        </p>
+        <div class="project-stack">
+          <span class="stack-tag">Front-End</span>
+          <span class="stack-tag">Back-End</span>
+          <span class="stack-tag">VBA</span>
+          <span class="stack-tag">SQL</span>
+          <span class="stack-tag">Autenticação</span>
+          <span class="stack-tag">Gestão de Dados</span>
+        </div>
+        <div class="project-links">
+          <span class="project-link">Uso interno — Ministério da Educação</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="container">
+    <p class="section-label reveal">Trajetória</p>
+    <h2 class="section-title reveal">Formação &amp; Certificações</h2>
+    <div class="section-line reveal"></div>
+    <div class="edu-grid">
+
+      <div class="reveal">
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">2023 — 2027</div>
+            <div class="timeline-title">Bacharelado em Engenharia da Computação</div>
+            <div class="timeline-sub">CEUB — Centro Universitário de Brasília · 7º Semestre</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">Jan 2026 — Atualmente</div>
+            <div class="timeline-title">Estagiário de TI — Ministério da Educação</div>
+            <div class="timeline-sub">Programação · Gestão de Dados · Front e Back-End · VBA</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">Mar 2024 — Jan 2026</div>
+            <div class="timeline-title">Estagiário de TI — La Salle</div>
+            <div class="timeline-sub">Suporte técnico · Google Workspace · Banco de dados</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">ENCUCA — CEUB</div>
+            <div class="timeline-title">Apresentação: Engenharia na Medicina Veterinária</div>
+            <div class="timeline-sub">Dispenser de ração automático — Hardware &amp; Software</div>
+          </div>
+        </div>
+
+        <div class="disciplines">
+          <div class="disc-title">Disciplinas relevantes</div>
+          <div class="disc-chips">
+            <span class="disc-chip">IoT</span>
+            <span class="disc-chip">Interação Humano-Computador</span>
+            <span class="disc-chip">Sistemas em Tempo Real</span>
+            <span class="disc-chip">Processamento Digital de Sinais</span>
+            <span class="disc-chip">Circuitos Digitais</span>
+            <span class="disc-chip">Algoritmos</span>
+            <span class="disc-chip">Banco de Dados</span>
+            <span class="disc-chip">Redes de Computadores</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="certs-list">
+          <div class="cert-item">
+            <div class="cert-icon">&#9729;</div>
+            <div>
+              <div class="cert-name">Cisco — Introduction to IoT</div>
+              <div class="cert-issuer">Cisco Networking Academy</div>
+            </div>
+          </div>
+          <div class="cert-item">
+            <div class="cert-icon">&#128187;</div>
+            <div>
+              <div class="cert-name">Lógica de Programação</div>
+              <div class="cert-issuer">Trybe</div>
+            </div>
+          </div>
+          <div class="cert-item">
+            <div class="cert-icon">&#128202;</div>
+            <div>
+              <div class="cert-name">Understand Data Concepts</div>
+              <div class="cert-issuer">Microsoft</div>
+            </div>
+          </div>
+          <div class="cert-item">
+            <div class="cert-icon">&#128013;</div>
+            <div>
+              <div class="cert-name">Jornada Python</div>
+              <div class="cert-issuer">Hashtag Treinamentos</div>
+            </div>
+          </div>
+          <div class="cert-item">
+            <div class="cert-icon">&#127760;</div>
+            <div>
+              <div class="cert-name">Jornada Full Stack</div>
+              <div class="cert-issuer">Hashtag Treinamentos</div>
+            </div>
+          </div>
+          <div class="cert-item">
+            <div class="cert-icon">&#128274;</div>
+            <div>
+              <div class="cert-name">Cibersegurança</div>
+              <div class="cert-issuer">FGV Online</div>
+            </div>
+          </div>
+          <div class="cert-item">
+            <div class="cert-icon">&#128260;</div>
+            <div>
+              <div class="cert-name">Introdução ao Git e GitHub</div>
+              <div class="cert-issuer">FGV Online</div>
+            </div>
+          </div>
+          <div class="cert-item">
+            <div class="cert-icon">&#129302;</div>
+            <div>
+              <div class="cert-name">Imersão DEV — Agentes de IA</div>
+              <div class="cert-issuer">Alura</div>
+            </div>
+          </div>
+          <div class="cert-item">
+            <div class="cert-icon">&#128218;</div>
+            <div>
+              <div class="cert-name">Aprendendo com Python</div>
+              <div class="cert-issuer">ENAP</div>
+            </div>
+          </div>
+          <div class="cert-item">
+            <div class="cert-icon">&#128200;</div>
+            <div>
+              <div class="cert-name">Básico em Orçamento Público</div>
+              <div class="cert-issuer">ENAP</div>
+            </div>
+          </div>
+          <div class="cert-item">
+            <div class="cert-icon">&#128196;</div>
+            <div>
+              <div class="cert-name">Microsoft Word 2016 Intermediário</div>
+              <div class="cert-issuer">Fundação Bradesco</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <p class="section-label reveal">Vamos conversar</p>
+    <h2 class="section-title reveal">Contato</h2>
+    <div class="section-line reveal"></div>
+    <div class="contact-inner reveal">
+      <p class="contact-desc">
+        Estou aberto a oportunidades de estágio, projetos colaborativos e conversas sobre tecnologia. Se quiser trocar uma ideia ou tem uma proposta, fique à vontade para entrar em contato — respondo com agilidade.
+      </p>
+      <div class="contact-cards">
+        <a href="mailto:lucasaraujodepaula23@gmail.com" class="contact-card" id="contact-email">
+          <div class="contact-card-icon">&#9993;</div>
+          <div>
+            <div class="contact-card-label">E-mail</div>
+            <div class="contact-card-value">lucasaraujodepaula23@gmail.com</div>
+          </div>
+          <div class="contact-card-arrow">&#8599;</div>
+        </a>
+        <a href="https://www.linkedin.com/in/lucas-araujo-de-paula-8463b9271" class="contact-card" id="contact-linkedin" target="_blank" rel="noopener">
+          <div class="contact-card-icon">in</div>
+          <div>
+            <div class="contact-card-label">LinkedIn</div>
+            <div class="contact-card-value">lucas-araujo-de-paula</div>
+          </div>
+          <div class="contact-card-arrow">&#8599;</div>
+        </a>
+        <a href="https://github.com/15LUCASARAUJO" class="contact-card" id="contact-github" target="_blank" rel="noopener">
+          <div class="contact-card-icon" style="font-family:'JetBrains Mono',monospace;font-size:0.85rem;">gh</div>
+          <div>
+            <div class="contact-card-label">GitHub</div>
+            <div class="contact-card-value">15LUCASARAUJO</div>
+          </div>
+          <div class="contact-card-arrow">&#8599;</div>
+        </a>
+        <a href="tel:+5561996885459" class="contact-card" id="contact-phone">
+          <div class="contact-card-icon">&#128222;</div>
+          <div>
+            <div class="contact-card-label">Telefone</div>
+            <div class="contact-card-value">(61) 99688-5459</div>
+          </div>
+          <div class="contact-card-arrow">&#8599;</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Desenvolvido por <span>Lucas Araújo de Paula</span> &mdash; Brasília, 2025</p>
+  <p style="margin-top:0.4rem;font-size:0.75rem;">Engenharia da Computação &middot; CEUB &middot; Hardware + Software + Dados</p>
+</footer>
+
+<style>
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+</style>
+<script src="script.js"></script>
+</body>
+</html>
