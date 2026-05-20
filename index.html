@@ -1,387 +1,313 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lucas Araújo — Portfólio</title>
-  <meta
-    name="description"
-    content="Portfólio de Lucas Araújo de Paula — Engenharia da Computação, desenvolvimento full stack, automações, dados e experiências tecnológicas."
-  />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Lucas Araújo — Portfólio</title>
+<meta name="description" content="Portfólio de Lucas Araújo de Paula — Engenharia da Computação, desenvolvimento full stack, automações, dados e experiências tecnológicas."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="noise"></div>
-  <canvas id="heroCanvas"></canvas>
-  <div id="loader">
-    <div>
-      <div class="loaderTitle">
-        LUCAS<br>
-        ARAÚJO
-      </div>
-      <div class="loaderCounter">
-        Engenharia da Computação · Full Stack · Dados · Automação
-      </div>
-    </div>
-    <div class="loaderBottom">
-      <div class="loaderBar" id="loaderBar"></div>
-    </div>
-  </div>
-  <nav>
-    <div class="navLogo">
-      LUCAS
-    </div>
-    <div class="navLinks">
-      <a href="#about">Sobre</a>
-      <a href="#experience">Experiência</a>
-      <a href="#projects">Projetos</a>
-      <a href="#skills">Stack</a>
-      <a href="#education">Formação</a>
-      <a href="#contact">Contato</a>
-    </div>
-  </nav>
-  <section id="hero">
-    <div class="container heroContent">
-      <div class="heroTitle huge">
-        <span class="heroLine">
-          CONSTRUINDO
-        </span>
-        <span class="heroLine">
-          EXPERIÊNCIAS
-        </span>
-        <span class="heroLine">
-          TECNOLÓGICAS
-        </span>
-      </div>
-      <div class="heroBottom">
-        <div>
-          <div class="heroText">
-            Estudante de Engenharia da Computação e desenvolvedor focado em aplicações web, automações, sistemas internos e soluções orientadas a dados. Atualmente atuando com tecnologia em ambientes institucionais e corporativos.
-          </div>
-          <div class="heroButtons">
-            <a href="https://github.com/15LUCASARAUJO" target="_blank">
-              GitHub
-            </a>
-            <a href="https://www.linkedin.com/in/lucas-araujo-de-paula-8463b9271" target="_blank">
-              LinkedIn
-            </a>
-            <a href="mailto:lucasaraujodepaula23@gmail.com">
-              Contato
-            </a>
-          </div>
-        </div>
-        <div class="scrollHint">
-          Explore
-        </div>
-      </div>
-    </div>
-  </section>
-  <section id="about">
-    <div class="container aboutGrid">
-      <div class="aboutSticky">
-        <div class="label">
-          SOBRE
-        </div>
-        <div class="huge">
-          SOFTWARE<br>
-          DADOS<br>
-          E SISTEMAS
-        </div>
-      </div>
-      <div class="aboutContent">
-        <div class="aboutBlock">
-          <h3>
-            Engenharia da Computação
-          </h3>
-          <p>
-            Atualmente cursando Engenharia da Computação no CEUB, desenvolvendo conhecimentos voltados para software, hardware, automações, dados e arquitetura computacional.
-          </p>
-        </div>
-        <div class="aboutBlock">
-          <h3>
-            Desenvolvimento Full Stack
-          </h3>
-          <p>
-            Experiência prática com frontend, backend, APIs REST, bancos de dados, automações administrativas e desenvolvimento de soluções internas.
-          </p>
-        </div>
-        <div class="aboutBlock">
-          <h3>
-            Dados e automações
-          </h3>
-          <p>
-            Atuação com manipulação de dados, VBA, SQL, Excel, relatórios administrativos e otimização de processos utilizando tecnologia.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section id="experience">
-    <div class="container">
-      <div class="label">
-        EXPERIÊNCIA
-      </div>
-      <div class="huge">
-        EXPERIÊNCIA<br>
-        PROFISSIONAL
-      </div>
-      <div class="experienceGrid">
-        <div class="experienceCard">
-          <div class="experienceDate">
-            2026 — Atual
-          </div>
-          <div class="experienceTitle">
-            Ministério da Educação — TI
-          </div>
-          <div class="experienceText">
-            Atuação com manipulação de dados, desenvolvimento frontend, backend e VBA, além de automações administrativas e suporte tecnológico em ambiente institucional.
-          </div>
-        </div>
-        <div class="experienceCard">
-          <div class="experienceDate">
-            2024 — 2026
-          </div>
-          <div class="experienceTitle">
-            Colégio La Salle — Estágio em TI
-          </div>
-          <div class="experienceText">
-            Suporte técnico institucional, utilização de ferramentas Google Workspace, resolução de problemas tecnológicos e apoio operacional.
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="horizontal" id="projects">
-    <div class="horizontalSticky">
-      <div class="horizontalTrack" id="horizontalTrack">
-        <div class="panel">
-          <div class="panelNumber">
-            01
-          </div>
-          <div class="panelInner">
-            <div class="label">
-              PROJETO
-            </div>
-            <div class="projectTitle">
-              DISPENSER<br>
-              AUTOMÁTICO
-            </div>
-            <div class="projectDescription">
-              Projeto acadêmico integrando hardware e software para automação de alimentação animal utilizando sensores, controle eletrônico e sistemas embarcados.
-            </div>
-            <div class="projectTags">
-              <span>Arduino</span>
-              <span>IoT</span>
-              <span>Automação</span>
-              <span>Hardware</span>
-            </div>
-          </div>
-        </div>
-        <div class="panel dark">
-          <div class="panelNumber">
-            02
-          </div>
-          <div class="panelInner">
-            <div class="label">
-              PROJETO
-            </div>
-            <div class="projectTitle">
-              SISTEMAS<br>
-              INTERNOS
-            </div>
-            <div class="projectDescription">
-              Desenvolvimento de soluções administrativas, automações, controle de dados e ferramentas utilizadas em ambientes institucionais.
-            </div>
-            <div class="projectTags">
-              <span>Python</span>
-              <span>SQL</span>
-              <span>VBA</span>
-              <span>Backend</span>
-            </div>
-          </div>
-        </div>
-        <div class="panel">
-          <div class="panelNumber">
-            03
-          </div>
-          <div class="panelInner">
-            <div class="label">
-              PROJETO
-            </div>
-            <div class="projectTitle">
-              EXPERIÊNCIAS<br>
-              DIGITAIS
-            </div>
-            <div class="projectDescription">
-              Desenvolvimento de interfaces modernas com foco em motion design, storytelling visual e experiências digitais interativas.
-            </div>
-            <div class="projectTags">
-              <span>GSAP</span>
-              <span>Frontend</span>
-              <span>Motion</span>
-              <span>UI</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section id="skills">
-    <div class="container">
-      <div class="label">
-        STACK
-      </div>
-      <div class="huge">
-        TECNOLOGIAS
-      </div>
-      <div class="skillsGrid">
-        <div class="skill">
-          <h4>Linguagens</h4>
-          <p>
-            Python, JavaScript, SQL, HTML, CSS, C/C++ e VBA aplicados em automações, sistemas web e backend.
-          </p>
-        </div>
-        <div class="skill">
-          <h4>Backend & APIs</h4>
-          <p>
-            Desenvolvimento backend, APIs REST, bancos de dados, autenticação e integração de sistemas.
-          </p>
-        </div>
-        <div class="skill">
-          <h4>Dados</h4>
-          <p>
-            Manipulação de dados, SQL, Excel avançado, relatórios administrativos e automações.
-          </p>
-        </div>
-        <div class="skill">
-          <h4>Frontend</h4>
-          <p>
-            Interfaces modernas utilizando HTML, CSS, JavaScript e animações com GSAP.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section id="certifications">
-    <div class="container">
-      <div class="label">
-        CURSOS
-      </div>
-      <div class="huge">
-        CERTIFICAÇÕES
-      </div>
-      <div class="certGrid">
-        <div class="certCard">
-          <div class="certProvider">
-            freeCodeCamp
-          </div>
-          <div class="certTitle">
-            Responsive Web Design
-          </div>
-          <div class="certDescription">
-            Desenvolvimento de interfaces responsivas utilizando HTML, CSS e boas práticas de UI.
-          </div>
-        </div>
-        <div class="certCard">
-          <div class="certProvider">
-            FGV Online
-          </div>
-          <div class="certTitle">
-            Git e GitHub
-          </div>
-          <div class="certDescription">
-            Versionamento de código, GitHub e fluxo de desenvolvimento colaborativo.
-          </div>
-        </div>
-        <div class="certCard">
-          <div class="certProvider">
-            Alura
-          </div>
-          <div class="certTitle">
-            Imersão IA
-          </div>
-          <div class="certDescription">
-            Introdução ao desenvolvimento de aplicações utilizando inteligência artificial.
-          </div>
-        </div>
-        <div class="certCard">
-          <div class="certProvider">
-            ENAP
-          </div>
-          <div class="certTitle">
-            Python
-          </div>
-          <div class="certDescription">
-            Desenvolvimento utilizando Python voltado para lógica, automações e aplicações.
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section id="education">
-    <div class="container">
-      <div class="label">
-        FORMAÇÃO
-      </div>
-      <div class="huge">
-        TRAJETÓRIA
-      </div>
-      <div class="timeline">
-        <div class="timelineItem">
-          <div class="timelineDate">
-            2023 — 2027
-          </div>
-          <div class="timelineTitle">
-            Engenharia da Computação — CEUB
-          </div>
-          <div class="timelineDesc">
-            Graduação voltada para desenvolvimento de software, hardware, dados, automações e sistemas computacionais.
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section id="contact">
-    <div class="container">
-      <div class="label">
-        CONTATO
-      </div>
-      <div class="contactTitle">
-        VAMOS<br>
-        CONSTRUIR<br>
-        ALGO?
-      </div>
-      <div class="contactLinks">
-        <a href="mailto:lucasaraujodepaula23@gmail.com">
-          <span>Email</span>
-          <span>→</span>
-        </a>
-        <a href="https://github.com/15LUCASARAUJO" target="_blank">
-          <span>GitHub</span>
-          <span>→</span>
-        </a>
-        <a href="https://www.linkedin.com/in/lucas-araujo-de-paula-8463b9271" target="_blank">
-          <span>LinkedIn</span>
-          <span>→</span>
-        </a>
-      </div>
-    </div>
-  </section>
-  <footer>
-    <div>
-      Lucas Araújo
-    </div>
-    <div>
-      Brasília — DF
-    </div>
-  </footer>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="script.js"></script>
+<div class="noise"></div>
+<canvas id="heroCanvas"></canvas>
+
+<div id="loader">
+<div>
+<div class="loaderTitle">
+LUCAS<br>ARAÚJO
+</div>
+<div class="loaderCounter">
+Engenharia da Computação · Full Stack · Dados · Automação
+</div>
+</div>
+<div class="loaderBottom">
+<div class="loaderBar" id="loaderBar"></div>
+</div>
+</div>
+
+<nav>
+<div class="navLogo">LUCAS</div>
+<div class="navLinks">
+<a href="#about">Sobre</a>
+<a href="#experience">Experiência</a>
+<a href="#projects">Projetos</a>
+<a href="#skills">Stack</a>
+<a href="#education">Formação</a>
+<a href="#contact">Contato</a>
+</div>
+</nav>
+
+<section id="hero">
+<div class="container heroContent">
+<div class="heroTitle huge">
+<span class="heroLine">CONSTRUINDO</span>
+<span class="heroLine">EXPERIÊNCIAS</span>
+<span class="heroLine">TECNOLÓGICAS</span>
+</div>
+
+<div class="heroBottom">
+<div>
+<div class="heroText">
+Estudante de Engenharia da Computação e desenvolvedor focado em aplicações web, automações, sistemas internos e soluções orientadas a dados.
+</div>
+
+<div class="heroButtons">
+<a href="https://github.com/15LUCASARAUJO" target="_blank">GitHub</a>
+<a href="https://www.linkedin.com/in/lucas-araujo-de-paula-8463b9271" target="_blank">LinkedIn</a>
+<a href="mailto:lucasaraujodepaula23@gmail.com">Contato</a>
+</div>
+</div>
+
+<div class="scrollHint">
+Explore
+</div>
+</div>
+</div>
+</section>
+
+<section id="about">
+<div class="container aboutGrid">
+
+<div class="aboutSticky">
+<div class="label">SOBRE</div>
+<div class="huge">
+SOFTWARE<br>
+DADOS<br>
+E SISTEMAS
+</div>
+</div>
+
+<div class="aboutContent">
+
+<div class="aboutBlock">
+<h3>Engenharia da Computação</h3>
+<p>
+Atualmente cursando Engenharia da Computação no CEUB, desenvolvendo conhecimentos voltados para software, hardware, automações, dados e arquitetura computacional.
+</p>
+</div>
+
+<div class="aboutBlock">
+<h3>Desenvolvimento Full Stack</h3>
+<p>
+Experiência prática com frontend, backend, APIs REST, bancos de dados, automações administrativas e desenvolvimento de soluções internas.
+</p>
+</div>
+
+<div class="aboutBlock">
+<h3>Dados e automações</h3>
+<p>
+Atuação com manipulação de dados, VBA, SQL, Excel, relatórios administrativos e otimização de processos utilizando tecnologia.
+</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<section id="experience">
+<div class="container">
+<div class="label">EXPERIÊNCIA</div>
+
+<div class="huge">
+EXPERIÊNCIA<br>
+PROFISSIONAL
+</div>
+
+<div class="experienceGrid">
+
+<div class="experienceCard">
+<div class="experienceDate">2026 — Atual</div>
+<div class="experienceTitle">Ministério da Educação — TI</div>
+<div class="experienceText">
+Atuação com manipulação de dados, desenvolvimento frontend, backend e VBA, além de automações administrativas e suporte tecnológico.
+</div>
+</div>
+
+<div class="experienceCard">
+<div class="experienceDate">2024 — 2026</div>
+<div class="experienceTitle">Colégio La Salle — Estágio em TI</div>
+<div class="experienceText">
+Suporte técnico institucional, utilização de ferramentas Google Workspace, resolução de problemas tecnológicos e apoio operacional.
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<section class="horizontal" id="projects">
+<div class="horizontalSticky">
+<div class="horizontalTrack" id="horizontalTrack">
+
+<div class="panel">
+<div class="panelNumber">01</div>
+<div class="panelInner">
+<div class="label">PROJETO</div>
+<div class="projectTitle">
+DISPENSER<br>
+AUTOMÁTICO
+</div>
+<div class="projectDescription">
+Projeto acadêmico integrando hardware e software para automação de alimentação animal utilizando sensores e sistemas embarcados.
+</div>
+<div class="projectTags">
+<span>Arduino</span>
+<span>IoT</span>
+<span>Automação</span>
+<span>Hardware</span>
+</div>
+</div>
+</div>
+
+<div class="panel dark">
+<div class="panelNumber">02</div>
+<div class="panelInner">
+<div class="label">PROJETO</div>
+<div class="projectTitle">
+SISTEMAS<br>
+INTERNOS
+</div>
+<div class="projectDescription">
+Desenvolvimento de soluções administrativas, automações, controle de dados e ferramentas institucionais.
+</div>
+<div class="projectTags">
+<span>Python</span>
+<span>SQL</span>
+<span>VBA</span>
+<span>Backend</span>
+</div>
+</div>
+</div>
+
+<div class="panel">
+<div class="panelNumber">03</div>
+<div class="panelInner">
+<div class="label">PROJETO</div>
+<div class="projectTitle">
+EXPERIÊNCIAS<br>
+DIGITAIS
+</div>
+<div class="projectDescription">
+Desenvolvimento de interfaces modernas com foco em motion design, storytelling visual e experiências digitais interativas.
+</div>
+<div class="projectTags">
+<span>GSAP</span>
+<span>Frontend</span>
+<span>Motion</span>
+<span>UI</span>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<section id="skills">
+<div class="container">
+<div class="label">STACK</div>
+
+<div class="huge">
+TECNOLOGIAS
+</div>
+
+<div class="skillsGrid">
+
+<div class="skill">
+<h4>Linguagens</h4>
+<p>
+Python, JavaScript, SQL, HTML, CSS, C/C++ e VBA aplicados em automações, sistemas web e backend.
+</p>
+</div>
+
+<div class="skill">
+<h4>Backend & APIs</h4>
+<p>
+Desenvolvimento backend, APIs REST, bancos de dados, autenticação e integração de sistemas.
+</p>
+</div>
+
+<div class="skill">
+<h4>Dados</h4>
+<p>
+Manipulação de dados, SQL, Excel avançado, relatórios administrativos e automações.
+</p>
+</div>
+
+<div class="skill">
+<h4>Frontend</h4>
+<p>
+Interfaces modernas utilizando HTML, CSS, JavaScript e animações com GSAP.
+</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<section id="education">
+<div class="container">
+<div class="label">FORMAÇÃO</div>
+
+<div class="huge">
+TRAJETÓRIA
+</div>
+
+<div class="timeline">
+
+<div class="timelineItem">
+<div class="timelineDate">2023 — 2027</div>
+<div class="timelineTitle">Engenharia da Computação — CEUB</div>
+<div class="timelineDesc">
+Graduação voltada para desenvolvimento de software, hardware, dados, automações e sistemas computacionais.
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<section id="contact">
+<div class="container">
+
+<div class="label">CONTATO</div>
+
+<div class="contactTitle">
+VAMOS<br>
+CONSTRUIR<br>
+ALGO?
+</div>
+
+<div class="contactLinks">
+<a href="mailto:lucasaraujodepaula23@gmail.com">
+<span>Email</span>
+<span>→</span>
+</a>
+
+<a href="https://github.com/15LUCASARAUJO" target="_blank">
+<span>GitHub</span>
+<span>→</span>
+</a>
+
+<a href="https://www.linkedin.com/in/lucas-araujo-de-paula-8463b9271" target="_blank">
+<span>LinkedIn</span>
+<span>→</span>
+</a>
+</div>
+
+</div>
+</section>
+
+<footer>
+<div>Lucas Araújo</div>
+<div>Brasília — DF</div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
