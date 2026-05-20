@@ -5,13 +5,13 @@
 }
 html{
   scroll-behavior:smooth;
-  overflow-x:hidden;
+  overflow-x:clip;
 }
 body{
   background:#ece7df;
   color:#111;
   font-family:'Manrope',sans-serif;
-  overflow-x:hidden;
+  overflow-x:clip;
   -webkit-font-smoothing:antialiased;
 }
 :root{
@@ -59,7 +59,7 @@ section{
 }
 .huge{
   font-family:'Syne',sans-serif;
-  font-size:clamp(3.2rem,8vw,10rem);
+  font-size:clamp(2rem,5.5vw,6rem);
   line-height:.92;
   letter-spacing:-4px;
   font-weight:800;
@@ -148,7 +148,7 @@ nav{
 .heroLine{
   display:block;
   transform:translateY(100%);
-  white-space:normal;
+  white-space:nowrap;
   width:100%;
   line-height:.95;
 }
@@ -205,8 +205,8 @@ nav{
 }
 .aboutGrid{
   display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:100px;
+  grid-template-columns:1.2fr 1fr;
+  gap:60px;
 }
 .aboutSticky{
   position:sticky;
@@ -257,7 +257,7 @@ nav{
   color:#666;
 }
 .horizontal{
-  height:300vh;
+  height: auto !important;
   position:relative;
 }
 .horizontalSticky{
@@ -451,7 +451,7 @@ footer{
   .navLinks{
     display:none;
   }
-  .huge{
+  .aboutSticky .huge{
     font-size:clamp(2.5rem,12vw,4.5rem);
     line-height:1;
     letter-spacing:-2px;
