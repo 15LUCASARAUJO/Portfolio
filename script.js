@@ -1,11 +1,9 @@
 gsap.registerPlugin(ScrollTrigger);
-
 gsap.to("#loaderBar",{
   width:"100%",
   duration:2.2,
   ease:"power4.inOut"
 });
-
 gsap.to("#loader",{
   opacity:0,
   delay:2.4,
@@ -14,7 +12,6 @@ gsap.to("#loader",{
     document.getElementById("loader").style.display="none";
   }
 });
-
 gsap.to(".heroLine",{
   y:0,
   stagger:.1,
@@ -22,16 +19,13 @@ gsap.to(".heroLine",{
   duration:1.2,
   ease:"power4.out"
 });
-
 gsap.from(".heroBottom",{
   opacity:0,
   y:30,
   delay:2.1,
   duration:1
 });
-
 gsap.utils.toArray(".aboutBlock").forEach(block=>{
-
   gsap.from(block,{
     opacity:0,
     y:60,
@@ -41,19 +35,12 @@ gsap.utils.toArray(".aboutBlock").forEach(block=>{
       start:"top 85%"
     }
   });
-
 });
-
 if(window.innerWidth > 900){
-
   const track=document.getElementById("horizontalTrack");
-
   gsap.to(track,{
-
     x:()=>-(track.scrollWidth-window.innerWidth),
-
     ease:"none",
-
     scrollTrigger:{
       trigger:".horizontal",
       start:"top top",
@@ -62,54 +49,34 @@ if(window.innerWidth > 900){
       pin:true,
       anticipatePin:1
     }
-
   });
-
 }
-
 const canvas=document.getElementById("heroCanvas");
 const ctx=canvas.getContext("2d");
-
 canvas.width=window.innerWidth;
 canvas.height=window.innerHeight;
-
 const particles=[];
-
 for(let i=0;i<80;i++){
-
   particles.push({
-
     x:Math.random()*canvas.width,
     y:Math.random()*canvas.height,
-
     radius:Math.random()*2,
-
     speedX:(Math.random()-.5)*.2,
     speedY:(Math.random()-.5)*.2
-
   });
-
 }
-
 function animateParticles(){
-
   ctx.clearRect(0,0,canvas.width,canvas.height);
-
   particles.forEach(p=>{
-
     p.x+=p.speedX;
     p.y+=p.speedY;
-
     if(p.x<0||p.x>canvas.width){
       p.speedX*=-1;
     }
-
     if(p.y<0||p.y>canvas.height){
       p.speedY*=-1;
     }
-
     ctx.beginPath();
-
     ctx.arc(
       p.x,
       p.y,
@@ -117,21 +84,13 @@ function animateParticles(){
       0,
       Math.PI*2
     );
-
     ctx.fillStyle="rgba(0,0,0,.08)";
     ctx.fill();
-
   });
-
   requestAnimationFrame(animateParticles);
-
 }
-
 animateParticles();
-
 window.addEventListener("resize",()=>{
-
   canvas.width=window.innerWidth;
   canvas.height=window.innerHeight;
-
 });
