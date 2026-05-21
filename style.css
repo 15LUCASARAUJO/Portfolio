@@ -319,19 +319,6 @@ nav{
   text-transform:uppercase;
   letter-spacing:2px;
 }
-.dark{
-  background:#111;
-  color:#ece7df;
-}
-.dark .projectDescription{
-  color:#bbb;
-}
-.dark .projectTags span{
-  border-color:rgba(255,255,255,.1);
-}
-.dark .panelNumber{
-  color:rgba(255,255,255,.03);
-}
 .skillsGrid,
 .certGrid{
   margin-top:90px;
@@ -502,4 +489,57 @@ footer{
   .contactTitle{
     font-size:clamp(2.8rem,13vw,5rem);
   }
+}
+* { cursor: none; }
+.cursor {
+  width: 12px;
+  height: 12px;
+  background: #111;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 999999;
+  transition: transform .3s ease, width .3s, height .3s;
+  transform: translate(-50%, -50%);
+}
+.cursor.hover {
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 1px solid #111;
+}
+.experienceGrid {
+  position: relative;
+  padding-left: 40px;
+}
+.experienceLineTrack {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  background: rgba(0,0,0,.08);
+}
+.experienceLine {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 0%;
+  background: #111;
+}
+.experienceCard {
+  position: relative;
+}
+.experienceCard::before {
+  content: '';
+  position: absolute;
+  left: -46px;
+  top: 40px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #111;
+  border: 3px solid #ece7df;
+  outline: 1px solid #111;
 }
