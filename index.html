@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="cursor" id="cursor"></div>
   <div class="noise"></div>
   <canvas id="heroCanvas"></canvas>
   <div id="loader">
@@ -131,6 +132,8 @@
         PROFISSIONAL
       </div>
       <div class="experienceGrid">
+        <div class="experienceLineTrack"></div>
+        <div class="experienceLine" id="experienceLine"></div>
         <div class="experienceCard">
           <div class="experienceDate">
             2026 — Atual
@@ -182,7 +185,7 @@
             </div>
           </div>
         </div>
-        <div class="panel dark">
+        <div class="panel">
           <div class="panelNumber">
             02
           </div>
@@ -382,6 +385,6 @@
   </footer>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="script.js"></script>
+  <script type="module" src="script.js"></script>
 </body>
 </html>
