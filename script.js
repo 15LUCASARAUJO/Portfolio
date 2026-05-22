@@ -119,10 +119,10 @@ gsap.to('#experienceLine', {
 if (window.innerWidth > 900) {
   const scene    = new THREE.Scene();
   const camera   = new THREE.PerspectiveCamera(35, 1, 0.1, 100);
-  camera.position.set(0, 0.5, 7);
+  camera.position.set(0, 0.5, 8);
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer.setSize(600, 600);
+  renderer.setSize(800, 800);
   renderer.setClearColor(0x000000, 0);
   renderer.outputEncoding    = THREE.sRGBEncoding;
   renderer.toneMapping       = THREE.ACESFilmicToneMapping;
@@ -144,7 +144,7 @@ if (window.innerWidth > 900) {
   let dragX       = 0;
   let dragBase    = 0;
   const loader = new THREE.GLTFLoader();
-  loader.load("assets/laptop.glb", (gltf) => {
+  loader.load("assets/dispenser.glb", (gltf) => {
     model = gltf.scene;
     const box    = new THREE.Box3().setFromObject(model);
     const center = box.getCenter(new THREE.Vector3());
@@ -184,6 +184,72 @@ if (window.innerWidth > 900) {
       const seg    = 1 / (panels.length - 1);       
       const p      = Math.min(self.progress / seg, 1); 
       targetRotY   = p * Math.PI * 2;
+    }
+  });
+}
+if (window.innerWidth > 900) {
+  const scene2  = new THREE.Scene();
+  const camera2 = new THREE.PerspectiveCamera(35, 1, 0.1, 100);
+  camera2.position.set(0, 0.5, 8);
+  const renderer2 = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  renderer2.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer2.setSize(800, 800);
+  renderer2.setClearColor(0x000000, 0);
+  renderer2.outputEncoding      = THREE.sRGBEncoding;
+  renderer2.toneMapping         = THREE.ACESFilmicToneMapping;
+  renderer2.toneMappingExposure = 1.2;
+  const viewer2 = document.getElementById("modelViewer2");
+  viewer2.appendChild(renderer2.domElement);
+  renderer2.domElement.style.cursor = 'none';
+  scene2.add(new THREE.AmbientLight(0xffffff, 0.6));
+  const key2 = new THREE.DirectionalLight(0xffffff, 1.5);
+  key2.position.set(4, 6, 4);
+  scene2.add(key2);
+  const rim2 = new THREE.DirectionalLight(0xaaaaaa, 0.5);
+  rim2.position.set(-4, 2, -4);
+  scene2.add(rim2);
+  let model2       = null;
+  let targetRotY2  = 0;
+  let currentRotY2 = 0;
+  let dragging2    = false;
+  let dragX2       = 0;
+  let dragBase2    = 0;
+  const loader2 = new THREE.GLTFLoader();
+  loader2.load("assets/laptopcar.glb", (gltf) => {
+    model2 = gltf.scene;
+    const box    = new THREE.Box3().setFromObject(model2);
+    const center = box.getCenter(new THREE.Vector3());
+    const size   = box.getSize(new THREE.Vector3());
+    model2.position.sub(center);
+    model2.scale.setScalar(2.2 / Math.max(size.x, size.y, size.z));
+    scene2.add(model2);
+    viewer2.classList.add("visible");
+    animate2();
+  });
+  function animate2() {
+    requestAnimationFrame(animate2);
+    currentRotY2 += (targetRotY2 - currentRotY2) * 0.06;
+    if (model2) model2.rotation.y = currentRotY2;
+    renderer2.render(scene2, camera2);
+  }
+  renderer2.domElement.addEventListener("mousedown", e => {
+    dragging2 = true; dragX2 = e.clientX; dragBase2 = targetRotY2;
+  });
+  window.addEventListener("mousemove", e => {
+    if (!dragging2) return;
+    targetRotY2 = dragBase2 + (e.clientX - dragX2) * 0.008;
+  });
+  window.addEventListener("mouseup", () => { dragging2 = false; });
+  ScrollTrigger.create({
+    trigger: ".horizontal",
+    start: "top top",
+    end: () => "+=" + (document.getElementById("horizontalTrack").scrollWidth - window.innerWidth),
+    onUpdate(self) {
+      if (dragging2) return;
+      const seg   = 1 / (document.querySelectorAll(".panel").length - 1);
+      const p2raw = (self.progress - seg) / seg;
+      const p2    = Math.max(0, Math.min(p2raw, 1));
+      targetRotY2 = p2 * Math.PI * 2;
     }
   });
 }
