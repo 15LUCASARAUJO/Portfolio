@@ -569,3 +569,29 @@ footer{
 @media (max-width: 900px) {
   #modelViewer { display: none; }
 }
+#modelViewer2 {
+  position: absolute;
+  right: -40px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 800px;
+  height: 800px;
+  opacity: 0;
+  transition: opacity 1s ease;
+  pointer-events: auto;
+  overflow: visible;
+}
+#modelViewer2.visible {
+  opacity: 1;
+}
+#modelViewer2 canvas {
+  width: 100% !important;
+  height: 100% !important;
+  cursor: none !important;
+}
+#modelViewer2 canvas:active {
+  cursor: none !important;
+}
+@media (max-width: 900px) {
+  #modelViewer2 { display: none; }
+}
