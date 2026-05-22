@@ -264,7 +264,7 @@ nav{
   position:sticky;
   top:0;
   height:100vh;
-  overflow:hidden;
+  overflow:visible;
 }
 .horizontalTrack{
   display:flex;
@@ -278,7 +278,7 @@ nav{
   display:flex;
   align-items:center;
   position:relative;
-  overflow:hidden;
+  overflow:visible;
 }
 .panelInner{
   width:100%;
@@ -542,4 +542,30 @@ footer{
   background: #111;
   border: 3px solid #ece7df;
   outline: 1px solid #111;
+}
+#modelViewer {
+  position: absolute;
+  right: 5vw;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 600px;
+  height: 600px;
+  opacity: 0;
+  transition: opacity 1s ease;
+  pointer-events: auto;
+  overflow: visible;
+}
+#modelViewer.visible {
+  opacity: 1;
+}
+#modelViewer canvas {
+  width: 100% !important;
+  height: 100% !important;
+  cursor: none !important;
+}
+#modelViewer canvas:active {
+  cursor: none !important;
+}
+@media (max-width: 900px) {
+  #modelViewer { display: none; }
 }
