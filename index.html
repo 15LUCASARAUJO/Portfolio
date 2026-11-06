@@ -3,11 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lucas Araújo — Portfólio</title>
+  <title>Lucas Araújo - Portfólio</title>
   <meta
     name="description"
-    content="Portfólio de Lucas Araújo de Paula — Engenharia da Computação, desenvolvimento full stack, automações, dados e experiências tecnológicas."
+    content="Portfólio de Lucas Araújo de Paula - Engenharia da Computação, desenvolvimento full stack, automações, dados e experiências tecnológicas."
   />
+  <meta name="theme-color" content="#ece7df">
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="./assets/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Lucas Araújo - Portfólio">
+  <meta property="og:description" content="Engenharia da Computação, desenvolvimento full stack, automações, dados e IoT.">
+  <meta property="og:image" content="assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -18,9 +28,9 @@
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
 </head>
 <body>
-  <div class="cursor" id="cursor"></div>
-  <div class="noise"></div>
-  <canvas id="heroCanvas"></canvas>
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
+  <canvas id="heroCanvas" aria-hidden="true"></canvas>
   <div id="loader">
     <div>
       <div class="loaderTitle">
@@ -35,7 +45,7 @@
       <div class="loaderBar" id="loaderBar"></div>
     </div>
   </div>
-  <nav>
+  <nav aria-label="Principal">
     <div class="navLogo">
       LA
     </div>
@@ -44,7 +54,7 @@
       <a href="#experience">Experiência</a>
       <a href="#projects">Projetos</a>
       <a href="#skills">Stack</a>
-      <a HREF="#certifications">Cursos</a>
+      <a href="#certifications">Cursos</a>
       <a href="#education">Formação</a>
       <a href="#contact">Contato</a>
     </div>
@@ -68,10 +78,10 @@
             Estudante de Engenharia da Computação e desenvolvedor focado em aplicações web, automações e internet das coisas. Atualmente atuando com tecnologia em ambientes institucionais e corporativos.
           </div>
           <div class="heroButtons">
-            <a href="https://github.com/15LUCASARAUJO" target="_blank">
+            <a href="https://github.com/15LUCASARAUJO" target="_blank" rel="noopener noreferrer">
               GitHub
             </a>
-            <a href="https://www.linkedin.com/in/lucas-araujo-de-paula-8463b9271" target="_blank">
+            <a href="https://www.linkedin.com/in/lucas-araujo-de-paula-8463b9271" target="_blank" rel="noopener noreferrer">
               LinkedIn
             </a>
             <a href="mailto:lucasaraujodepaula23@gmail.com">
@@ -149,10 +159,10 @@
         </div>
         <div class="experienceCard">
           <div class="experienceDate">
-            2026 — 2026
+            2026
           </div>
           <div class="experienceTitle">
-            Ministério da Educação — Estágio em TI
+            Ministério da Educação - Estágio em TI
           </div>
           <div class="experienceText">
             Tratamento e organização de dados, programação Full Stack e códigos com foco em automação.
@@ -160,10 +170,10 @@
         </div>
         <div class="experienceCard">
           <div class="experienceDate">
-            2026 — Atual
+            2026 - Atual
           </div>
           <div class="experienceTitle">
-            Ministério da Educação — TI e Orçamento
+            Ministério da Educação - TI e Orçamento
           </div>
           <div class="experienceText">
             Análise, tratamento e organização de dados, programação Full Stack e códigos com foco em automação e organização. 
@@ -189,10 +199,10 @@
               AUTOMÁTICO
             </div>
             <div class="projectDescription">
-              Projeto acadêmico apresentado em uma feira na faculdade que integrando hardware e software com a finalidade de automatizar a alimentação de animais, com sistema de marcação de horário e controle de porções. Junto com dois amigos fizemos toda a estrutura de hardware e o software que conecta e controla a descida da ração.
+              Projeto acadêmico apresentado em uma feira da faculdade que integra hardware e software com a finalidade de automatizar a alimentação de animais, com sistema de marcação de horário e controle de porções. Junto com dois amigos fizemos toda a estrutura de hardware e o software que conecta e controla a descida da ração.
             </div>
             <div class="projectTags">
-              <span>Esp</span>
+              <span>ESP</span>
               <span>IOT</span>
               <span>Automação</span>
               <span>Hardware</span>
@@ -233,6 +243,7 @@
             <div class="label">
               PROJETO
             </div>
+            <div id="modelViewer3"></div>
             <div class="projectTitle">
               LEILÃO<br>
               DE<br>
@@ -243,6 +254,7 @@
             </div>
             <div class="projectTags">
               <span>Frontend</span>
+              <span>Equipe</span>
             </div>
           </div>
         </div>
@@ -352,10 +364,10 @@
       <div class="timeline">
         <div class="timelineItem">
           <div class="timelineDate">
-            2023 — 2027
+            2023 - 2027
           </div>
           <div class="timelineTitle">
-            Engenharia da Computação — CEUB
+            Engenharia da Computação - CEUB
           </div>
           <div class="timelineDesc">
             Graduação voltada para desenvolvimento de software, hardware, dados, automações e sistemas computacionais.
@@ -379,11 +391,11 @@
           <span>Email</span>
           <span>→</span>
         </a>
-        <a href="https://github.com/15LUCASARAUJO" target="_blank">
+        <a href="https://github.com/15LUCASARAUJO" target="_blank" rel="noopener noreferrer">
           <span>GitHub</span>
           <span>→</span>
         </a>
-        <a href="https://www.linkedin.com/in/lucas-araujo-de-paula-8463b9271" target="_blank">
+        <a href="https://www.linkedin.com/in/lucas-araujo-de-paula-8463b9271" target="_blank" rel="noopener noreferrer">
           <span>LinkedIn</span>
           <span>→</span>
         </a>
@@ -395,7 +407,7 @@
       Lucas Araújo
     </div>
     <div>
-      Brasília — DF
+      Brasília - DF
     </div>
   </footer>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
