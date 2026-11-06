@@ -1,30 +1,30 @@
 gsap.registerPlugin(ScrollTrigger);
-gsap.to("#loaderBar",{
-  width:"100%",
-  duration:2.2,
-  ease:"power4.inOut"
-});
-gsap.to("#loader",{
-  opacity:0,
-  delay:2.4,
-  duration:.8,
-  onComplete:()=>{
-    document.getElementById("loader").style.display="none";
-  }
-});
-gsap.to(".heroLine",{
-  y:0,
-  stagger:.1,
-  delay:1.8,
-  duration:1.2,
-  ease:"power4.out"
-});
-gsap.from(".heroBottom",{
-  opacity:0,
-  y:30,
-  delay:2.1,
-  duration:1
-});
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const isDesktop = window.innerWidth > 900;
+
+/* Loader real: acompanha o carregamento dos modelos 3D (mínimo de 1,2s) */
+const loadingManager = new THREE.LoadingManager();
+const loaderStart = performance.now();
+let loaderDone = false;
+function setLoaderProgress(pct){
+  gsap.to("#loaderBar",{width:pct+"%",duration:.4,ease:"power2.out",overwrite:true});
+}
+function finishLoader(){
+  if(loaderDone) return;
+  loaderDone = true;
+  setLoaderProgress(100);
+  const wait = Math.max(0, 1200 - (performance.now() - loaderStart)) / 1000 + (reduceMotion ? 0 : .4);
+  gsap.to("#loader",{
+    opacity:0, delay:wait, duration:reduceMotion ? .01 : .8,
+    onComplete:()=>{ document.getElementById("loader").style.display="none"; }
+  });
+  gsap.to(".heroLine",{y:0, stagger:.1, delay:wait*.7, duration:reduceMotion ? .01 : 1.2, ease:"power4.out"});
+  gsap.from(".heroBottom",{opacity:0, y:30, delay:wait, duration:reduceMotion ? .01 : 1});
+}
+loadingManager.onProgress = (url, loaded, total) => setLoaderProgress(loaded / total * 100);
+loadingManager.onLoad = finishLoader;
+setTimeout(finishLoader, 10000);                  // segurança
+if(!isDesktop) setTimeout(finishLoader, 1200);    // mobile: modelos carregam depois, sob demanda
 gsap.utils.toArray(".aboutBlock").forEach(block=>{
   gsap.from(block,{
     opacity:0,
@@ -36,24 +36,29 @@ gsap.utils.toArray(".aboutBlock").forEach(block=>{
     }
   });
 });
-if(window.innerWidth > 900){
+if(isDesktop){
   const track = document.getElementById("horizontalTrack");
-  const totalScroll = track.scrollWidth - window.innerWidth;
-  document.querySelector(".horizontal").style.height =
-    (totalScroll + window.innerHeight) + "px";
+  const totalScroll = () => track.scrollWidth - window.innerWidth;
   gsap.to(track, {
-    x: () => -totalScroll,
+    x: () => -totalScroll(),
     ease: "none",
     scrollTrigger: {
       trigger: ".horizontal",
       start: "top top",
-      end: () => "+=" + totalScroll,
+      end: () => "+=" + totalScroll(),
       scrub: 1,
       pin: true,
       anticipatePin: 1,
+      invalidateOnRefresh: true,
     }
   });
 }
+// ao cruzar o breakpoint desktop/mobile, recarrega para montar o layout certo
+let resizeTimer;
+window.addEventListener("resize", () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => { if ((window.innerWidth > 900) !== isDesktop) location.reload(); }, 250);
+});
 const canvas=document.getElementById("heroCanvas");
 const ctx=canvas.getContext("2d");
 canvas.width=window.innerWidth;
@@ -92,7 +97,7 @@ function animateParticles(){
   });
   requestAnimationFrame(animateParticles);
 }
-animateParticles();
+if(!reduceMotion) animateParticles();
 window.addEventListener("resize",()=>{
   canvas.width=window.innerWidth;
   canvas.height=window.innerHeight;
@@ -116,140 +121,111 @@ gsap.to('#experienceLine', {
     scrub: 1,
   }
 });
-if (window.innerWidth > 900) {
+/* ---------- Modelos 3D: um visualizador por painel ---------- */
+const MODELS = [
+  { el: "modelViewer",  file: "assets/dispenser.glb",    ambient: 0.5, rim: 0.4, fit: 3.1, camY: 0.3, label: "Modelo 3D interativo do dispenser automático" },
+  { el: "modelViewer2", file: "assets/laptopfolder.glb", ambient: 0.6, rim: 0.5, fit: 2.64, label: "Modelo 3D interativo do sistema de pedidos orçamentários" },
+  { el: "modelViewer3", file: "assets/laptopcar.glb",    ambient: 0.6, rim: 0.5, fit: 4.4, label: "Modelo 3D interativo do leilão de carros" }
+];
+
+function createViewer(cfg) {
+  const host = document.getElementById(cfg.el);
+  if (!host) return null;
+
   const scene    = new THREE.Scene();
   const camera   = new THREE.PerspectiveCamera(35, 1, 0.1, 100);
-  camera.position.set(0, 0.5, 8);
+  camera.position.set(0, cfg.camY ?? 0.5, 8);
+
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer.setSize(800, 800);
+  renderer.setSize(host.clientWidth || 700, host.clientHeight || 700, false);
   renderer.setClearColor(0x000000, 0);
-  renderer.outputEncoding    = THREE.sRGBEncoding;
-  renderer.toneMapping       = THREE.ACESFilmicToneMapping;
+  renderer.outputEncoding      = THREE.sRGBEncoding;
+  renderer.toneMapping         = THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1.2;
-  const viewerEl = document.getElementById("modelViewer");
-  viewerEl.appendChild(renderer.domElement);
-  renderer.domElement.style.cursor = 'none';
-  scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+  host.appendChild(renderer.domElement);
+  host.setAttribute("role", "img");
+  host.setAttribute("aria-label", cfg.label);
+
+  scene.add(new THREE.AmbientLight(0xffffff, cfg.ambient));
   const key = new THREE.DirectionalLight(0xffffff, 1.5);
   key.position.set(4, 6, 4);
   scene.add(key);
-  const rim = new THREE.DirectionalLight(0xaaaaaa, 0.4);
+  const rim = new THREE.DirectionalLight(0xaaaaaa, cfg.rim);
   rim.position.set(-4, 2, -4);
   scene.add(rim);
-  let model       = null;
-  let targetRotY  = 0;
-  let currentRotY = 0;
-  let dragging    = false;
-  let dragX       = 0;
-  let dragBase    = 0;
-  const loader = new THREE.GLTFLoader();
-  loader.load("assets/dispenser.glb", (gltf) => {
-    model = gltf.scene;
+
+  const state = { model: null, target: 0, current: 0, dragging: false, dragX: 0, dragBase: 0, inView: false };
+
+  new THREE.GLTFLoader(loadingManager).load(cfg.file, (gltf) => {
+    const model  = gltf.scene;
     const box    = new THREE.Box3().setFromObject(model);
     const center = box.getCenter(new THREE.Vector3());
     const size   = box.getSize(new THREE.Vector3());
     model.position.sub(center);
-    model.scale.setScalar(2.2 / Math.max(size.x, size.y, size.z));
+    model.scale.setScalar((cfg.fit || 2.2) / Math.max(size.x, size.y, size.z));
     scene.add(model);
-    viewerEl.classList.add("visible");
-    animate();
-  });
-  function animate() {
-    requestAnimationFrame(animate);
-    currentRotY += (targetRotY - currentRotY) * 0.06;
-    if (model) model.rotation.y = currentRotY;
+    state.model = model;
+    host.classList.add("visible");
+  }, undefined, (err) => console.warn("Falha ao carregar " + cfg.file, err));
+
+  // só renderiza quando o painel está na tela (economiza GPU/bateria)
+  new IntersectionObserver(([e]) => { state.inView = e.isIntersecting; }).observe(host);
+
+  (function tick() {
+    requestAnimationFrame(tick);
+    if (!state.model || !state.inView) return;
+    state.current += (state.target - state.current) * 0.06;
+    state.model.rotation.y = state.current;
     renderer.render(scene, camera);
-  }
+  })();
+
   renderer.domElement.addEventListener("mousedown", e => {
-    dragging = true;
-    dragX    = e.clientX;
-    dragBase = targetRotY;
+    state.dragging = true; state.dragX = e.clientX; state.dragBase = state.target;
   });
   window.addEventListener("mousemove", e => {
-    if (!dragging) return;
-    targetRotY = dragBase + (e.clientX - dragX) * 0.008;
+    if (!state.dragging) return;
+    state.target = state.dragBase + (e.clientX - state.dragX) * 0.008;
   });
-  window.addEventListener("mouseup", () => { dragging = false; });
-  ScrollTrigger.create({
-    trigger: ".horizontal",
-    start: "top top",
-    end: () => {
-      const track = document.getElementById("horizontalTrack");
-      return "+=" + (track.scrollWidth - window.innerWidth);
-    },
-    onUpdate(self) {
-      if (dragging) return;
-      const panels = document.querySelectorAll(".panel");
-      const seg    = 1 / (panels.length - 1);       
-      const p      = Math.min(self.progress / seg, 1); 
-      targetRotY   = p * Math.PI * 2;
-    }
-  });
+  window.addEventListener("mouseup", () => { state.dragging = false; });
+
+  return state;
 }
+
 if (window.innerWidth > 900) {
-  const scene2  = new THREE.Scene();
-  const camera2 = new THREE.PerspectiveCamera(35, 1, 0.1, 100);
-  camera2.position.set(0, 0.5, 8);
-  const renderer2 = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-  renderer2.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-  renderer2.setSize(800, 800);
-  renderer2.setClearColor(0x000000, 0);
-  renderer2.outputEncoding      = THREE.sRGBEncoding;
-  renderer2.toneMapping         = THREE.ACESFilmicToneMapping;
-  renderer2.toneMappingExposure = 1.2;
-  const viewer2 = document.getElementById("modelViewer2");
-  viewer2.appendChild(renderer2.domElement);
-  renderer2.domElement.style.cursor = 'none';
-  scene2.add(new THREE.AmbientLight(0xffffff, 0.6));
-  const key2 = new THREE.DirectionalLight(0xffffff, 1.5);
-  key2.position.set(4, 6, 4);
-  scene2.add(key2);
-  const rim2 = new THREE.DirectionalLight(0xaaaaaa, 0.5);
-  rim2.position.set(-4, 2, -4);
-  scene2.add(rim2);
-  let model2       = null;
-  let targetRotY2  = 0;
-  let currentRotY2 = 0;
-  let dragging2    = false;
-  let dragX2       = 0;
-  let dragBase2    = 0;
-  const loader2 = new THREE.GLTFLoader();
-  loader2.load("assets/laptopcar.glb", (gltf) => {
-    model2 = gltf.scene;
-    const box    = new THREE.Box3().setFromObject(model2);
-    const center = box.getCenter(new THREE.Vector3());
-    const size   = box.getSize(new THREE.Vector3());
-    model2.position.sub(center);
-    model2.scale.setScalar(2.2 / Math.max(size.x, size.y, size.z));
-    scene2.add(model2);
-    viewer2.classList.add("visible");
-    animate2();
-  });
-  function animate2() {
-    requestAnimationFrame(animate2);
-    currentRotY2 += (targetRotY2 - currentRotY2) * 0.06;
-    if (model2) model2.rotation.y = currentRotY2;
-    renderer2.render(scene2, camera2);
-  }
-  renderer2.domElement.addEventListener("mousedown", e => {
-    dragging2 = true; dragX2 = e.clientX; dragBase2 = targetRotY2;
-  });
-  window.addEventListener("mousemove", e => {
-    if (!dragging2) return;
-    targetRotY2 = dragBase2 + (e.clientX - dragX2) * 0.008;
-  });
-  window.addEventListener("mouseup", () => { dragging2 = false; });
+  const viewers = MODELS.map(createViewer);
+
   ScrollTrigger.create({
     trigger: ".horizontal",
     start: "top top",
     end: () => "+=" + (document.getElementById("horizontalTrack").scrollWidth - window.innerWidth),
     onUpdate(self) {
-      if (dragging2) return;
-      const seg   = 1 / (document.querySelectorAll(".panel").length - 1);
-      const p2raw = (self.progress - seg) / seg;
-      const p2    = Math.max(0, Math.min(p2raw, 1));
-      targetRotY2 = p2 * Math.PI * 2;
+      const steps = document.querySelectorAll(".panel").length - 1;
+      viewers.forEach((v, i) => {
+        if (!v || v.dragging) return;
+        // 0 quando o painel i está centralizado; gira uma volta ao entrar/sair
+        v.target = (self.progress * steps - i) * Math.PI * 2;
+      });
     }
   });
+} else {
+  // mobile: <model-viewer> leve, carregado só quando necessário
+  import("https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js").then(() => {
+    MODELS.forEach(cfg => {
+      const host = document.getElementById(cfg.el);
+      if (!host) return;
+      const mv = document.createElement("model-viewer");
+      mv.setAttribute("src", cfg.file);
+      mv.setAttribute("alt", cfg.label);
+      mv.setAttribute("camera-controls", "");
+      if (!reduceMotion) mv.setAttribute("auto-rotate", "");
+      mv.setAttribute("touch-action", "pan-y");
+      mv.setAttribute("loading", "lazy");
+      mv.setAttribute("environment-image", "neutral");
+      mv.setAttribute("exposure", "1.1");
+      mv.style.cssText = "width:100%;height:100%;background:transparent;--poster-color:transparent";
+      host.appendChild(mv);
+      host.classList.add("visible");
+    });
+  }).catch(err => console.warn("model-viewer indisponível", err));
 }
